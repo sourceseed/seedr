@@ -26,7 +26,7 @@ curl -sL http://bit.ly/gh-get | PROJECT=sourceseed/seedr bash
 Generate your first project:
 
 ```
-seedr generate --target test123
+seedr generate --seed golang --target test123
 ```
 
 
