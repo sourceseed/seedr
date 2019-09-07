@@ -8,9 +8,10 @@ import (
 )
 
 var rootCmd = &cobra.Command{
-	Use:   "skel",
-	Short: "Project skeleton generator",
-	Long:  `Project skeleton generator`,
+	Use:   "seedr",
+	Short: "Seedr helps you to get started quickly",
+	Long: `Seedr helps you to get started quickly.
+	Seedr can setup a project skeleton for you in seconds.`,
 }
 
 func Execute() {
