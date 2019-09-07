@@ -1,0 +1,4 @@
+name: e2e
+parameters:
+  - variable: APPNAME
+    description: "App name"
