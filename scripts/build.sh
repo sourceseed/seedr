@@ -28,7 +28,9 @@ fi
 # Instruct gox to build statically linked binaries
 export CGO_ENABLED=0
 
-LD_FLAGS="-s -w"
+LD_FLAGS="-s -w "
+LD_FLAGS+="-X 'github.com/NoUseFreak/go-vembed.version=`git describe --tags --abbrev=0`' "
+LD_FLAGS+="-X 'github.com/NoUseFreak/go-vembed.buildDate=`date +%Y-%m-%d\ %H:%M`' "
 
 # Ensure all remote modules are downloaded and cached before build so that
 # the concurrent builds launched by gox won't race to redundantly download them.
