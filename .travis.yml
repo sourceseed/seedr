@@ -1,5 +1,14 @@
 sudo: required
 language: go
 go:
-  - master
-  
+- master
+deploy:
+  provider: releases
+  api_key:
+    secure: Z5QPuExHGktONz8ChjSbRkLHo/vcWTboXN8aLVjJlf3akYj1iQPTolnCH6j1A69m9wgz/smWOcVxgmic1pejXdUxNpU45WHEeNH0Vs93i5cx+hwirO9tMcHfDnVXNb4nur68aZlJcFOvDPgu0ietmTmro3o8iI+Kdj2+0XrqJFeBBhrICw3kso1obwqEvI0uFZMcnym4WKs0pMY1F2U0S8nJdD+ZI544OZXD0T135RU8jKQyo6cZR1L/0DTJdae4aukTAsCd3HPfa9gj7SmCY9xmixO1uXsxV3Lfm94jUnFVNNJN7FdQk+5IjUe0Z5OlUzxgedaitIEn4JRmJePeLqrUpbHLQwzaovcZjWqiKPNKpzvSuAEAmzTTRDQRewx3qNeajxEBehCiq5vNo764PB2DXqf3mOWoieQzMbG/olPh0N/py1oTZpXmzNoqx3EZpXZGRI4P3XFQSJ32quNjQoYX4ZS7Nk1ArkGWGbbvwrFr7iqZlwiNdo7ssRFs8jGQPvkVMD/KLDbuBZJCk6ldDeNkI5bP3eMQVw1az+onqUsVtDBNuGNAkQKCyuAjJ9g0wJ9C8cW8SH0p8nWuw/V/RBh+zTUpHXqDurEgpqBQkGIggxOMBW5z1xgKW+bZWVKIdsE6pqprX1jy7k1xJVod4kMWW3yAG4fm6/BdjM+dtus=
+  file_glob: true
+  file: build/pkg/*
+  skip_cleanup: true
+  on:
+    repo: sourceseed/seedr
+    branch: master
