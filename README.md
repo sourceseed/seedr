@@ -32,6 +32,10 @@ seedr generate --seed golang --target test123
 
 ## Seeds
 
+A seed is either a directory or a git repository that contains an empty project
+structure. Any repository can be used as a seed, if that repository contains a
+`Seedfile`, more custom configuration can be generated.
+
  - directory on your local file system
  - git repository (only public at this point)
  - predefined seed, will fetch the seed from `github.com/sourceseed/seed-<NAME>.git`
