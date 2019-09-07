@@ -18,5 +18,20 @@ These will customize the skeleton to save you some more time.
  - git repository (only public at this point)
  - predefined seed, will fetch the seed from `github.com/sourceseed/seed-<NAME>.git`
 
+### Seedfile.yml
 
+```
+name: nameOfSeed
+parameters:
+  - variable: APPNAME
+    description: "Application name"
+```
+If a seed contains a `Seedfile.yml`, values for all parameters will be requested
+during setup. Seedr will search for `__APPNAME__` and replace it with the 
+provide value in both file name and file content.
 
+### .seedkeep
+
+If you want to keep empty directories in your seed you can place `.seedkeep`
+files in these directories. These will be deleted upon generation allowing for
+later usage.
