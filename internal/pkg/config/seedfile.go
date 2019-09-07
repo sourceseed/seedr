@@ -14,6 +14,27 @@ type Seedfile struct {
 type ParamOptions struct {
 	Variable    string
 	Description string
+	Optional    bool
+}
+
+func (po *ParamOptions) UnmarshalYAML(unmarshal func(interface{}) error) error {
+	p := struct{
+		Variable string
+		Description string
+		Optional *bool
+	}{}
+	err := unmarshal(&p)
+	if err != nil {
+		return err
+	}
+
+	po.Variable = p.Variable
+	po.Description = p.Description
+	if p.Optional == nil {
+		po.Optional = false
+	}
+
+	return err
 }
 
 func ParseSeedfile(filePath string) (*Seedfile, error) {

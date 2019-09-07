@@ -1,5 +1,7 @@
 # Seedr
 
+![Seedr Logo](https://avatars3.githubusercontent.com/u/54958814?s=200&v=4)
+
 Seedr helps you to get started quickly. Seedr can setup a project skeleton for 
 you in seconds. 
 
@@ -20,12 +22,13 @@ These will customize the skeleton to save you some more time.
 
 ### Seedfile.yml
 
-```
+```yaml
 name: nameOfSeed
 parameters:
   - variable: APPNAME
     description: "Application name"
 ```
+
 If a seed contains a `Seedfile.yml`, values for all parameters will be requested
 during setup. Seedr will search for `__APPNAME__` and replace it with the 
 provide value in both file name and file content.
@@ -35,3 +38,9 @@ provide value in both file name and file content.
 If you want to keep empty directories in your seed you can place `.seedkeep`
 files in these directories. These will be deleted upon generation allowing for
 later usage.
+
+## Roadmap
+
+ - Cleanup output
+ - Allow non-interactive generating
+ - Add parameter validation options

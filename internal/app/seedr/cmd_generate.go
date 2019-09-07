@@ -1,6 +1,7 @@
 package seedr
 
 import (
+	"errors"
 	"fmt"
 	"os"
 
@@ -63,6 +64,9 @@ func configSeed(str string) *seed.Seed {
 		Prompt: &survey.Input{Message: "What template do you want to use?"},
 		Validate: func(val interface{}) error {
 			str, _ := val.(string)
+			if str == "" {
+				return errors.New("Needs value")
+			}
 
 			sd, err := seed.NewSeed(str)
 			if err != nil {
@@ -83,6 +87,12 @@ func askParam(info config.ParamOptions) string {
 		Name: info.Variable,
 		Prompt: &survey.Input{
 			Message: fmt.Sprintf("%s (%s)", info.Description, info.Variable),
+		},
+		Validate: func(ans interface{}) error {
+			if !info.Optional && ans.(string) == "" {
+				return errors.New("Value required")
+			}
+			return nil
 		},
 	}}, &v)
 
