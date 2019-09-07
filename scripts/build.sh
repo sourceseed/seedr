@@ -34,8 +34,6 @@ LD_FLAGS="-s -w"
 # the concurrent builds launched by gox won't race to redundantly download them.
 go mod download
 
-BINARY_NAME="${PWD##*/}"
-
 # Build!
 echo "==> Building..."
 gox \
@@ -53,7 +51,7 @@ for PLATFORM in $(find ./build/bin -mindepth 1 -maxdepth 1 -type d); do
     echo "--> ${OSARCH}"
 
     pushd $PLATFORM >/dev/null 2>&1
-    zip ../../pkg/${BINARY_NAME}_${OSARCH}.zip ./*
+    zip ../../pkg/${OSARCH}.zip ./*
     popd >/dev/null 2>&1
 done
 
