@@ -1,0 +1,13 @@
+name: seedr
+description: Seedr helps you to get started quickly. Seedr can setup a project skeleton for you in seconds.
+homebrew:
+  - homepage: https://github.com/sourceseed/seedr
+    url: https://github.com/sourceseed/seedr/releases/download/{{ .Version }}/darwin_amd64.zip
+    tap:
+      url: git@github.com:sourceseed/homebrew-seedr.git
+    test: system "#{bin}/{{ .Name }} -h"
+githubrelease:
+  - owner: sourceseed
+    repo: seedr
+    assets:
+      - ./build/pkg/*
