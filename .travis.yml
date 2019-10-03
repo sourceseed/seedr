@@ -1,7 +1,6 @@
-sudo: required
 language: go
 go:
-- master
+- stable
 deploy:
 - provider: script
   skip_cleanup: true
