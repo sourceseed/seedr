@@ -17,24 +17,24 @@ XC_EXCLUDE_OSARCH="!darwin/arm !darwin/386"
 
 # Delete the build dir
 echo "==> Removing build directory..."
-rm -rf build/*
+rm -rf build/{bin,pkg}
 mkdir -p build/{bin,pkg}
 
 if ! which gox > /dev/null; then
     echo "==> Installing gox..."
-    go get -u github.com/mitchellh/gox
+    (cd /tmp && go get -u github.com/mitchellh/gox)
+fi
+
+if ! which vembed > /dev/null; then
+    echo "==> Installing vembed..."
+    (cd /tmp && go get -u github.com/NoUseFreak/go-vembed/vembed)
 fi
 
 # Instruct gox to build statically linked binaries
 export CGO_ENABLED=0
 
 LD_FLAGS="-s -w "
-LD_FLAGS+="-X 'github.com/NoUseFreak/go-vembed.version=`git describe --tags --abbrev=0`' "
-LD_FLAGS+="-X 'github.com/NoUseFreak/go-vembed.buildDate=`date +%Y-%m-%d\ %H:%M`' "
-LD_FLAGS+="-X 'github.com/NoUseFreak/go-vembed.gitCommit=`git rev-parse --short HEAD`' "
-LD_FLAGS+="-X 'github.com/NoUseFreak/go-vembed.gitState=`git diff --quiet || echo 'dirty'`' "
-LD_FLAGS+="-X 'github.com/NoUseFreak/go-vembed.gitBranch=`git symbolic-ref -q --short HEAD`' "
-LD_FLAGS+="-X 'github.com/NoUseFreak/go-vembed.gitSummary=`git describe --tags --dirty --always`' "
+LD_FLAGS+="`vembed`"
 
 # Ensure all remote modules are downloaded and cached before build so that
 # the concurrent builds launched by gox won't race to redundantly download them.
